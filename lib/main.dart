@@ -38,13 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      // body: Center(
-
-      //     // child: Image.network(
-      //     //   'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg',
-      //     // ),
-
-      //     ),
+      
 
       body: Center(
           child: Column(children: <Widget>[
