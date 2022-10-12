@@ -15,53 +15,90 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(
-        title: "Network Image",
-      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController num1controller = new TextEditingController();
+  TextEditingController num2controller = new TextEditingController();
+  String result = "0";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      
-
       body: Center(
-          child: Column(children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(15),
-          margin: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(0),
-            border: Border.all(
-              color: Colors.black,
-              width: 5,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 100, right: 100, top: 30, bottom: 20),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                controller: num1controller,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'First Number',
+                  hintText: 'Enter First Number',
+                ),
+              ),
             ),
-          ),
-          child: Image.network(
-              'https://miro.medium.com/max/828/1*nylReBLb1kY5fvg4QIgzKQ.png'),
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 100, right: 100, top: 10, bottom: 20),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                controller: num2controller,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Second Number',
+                  hintText: 'Enter Second Number',
+                ),
+              ),
+            ),
+            Wrap(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: 200, right: 50, top: 10, bottom: 20),
+                  child: ElevatedButton(
+                    child: Text("Addition"),
+                    onPressed: () {
+                      setState(() {
+                        int sum = int.parse(num1controller.text) +
+                            int.parse(num2controller.text);
+                        result = sum.toString();
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: 200, right: 250, top: 10, bottom: 20),
+                  child: Text(
+                    'Result : $result',
+                    style: TextStyle(fontSize: 20, color: Colors.red),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        Text(
-          'Welcome to Flutter Tutorial on Network Image',
-          style:
-              TextStyle(fontSize: 25, color: Colors.black, fontFamily: "Arial"),
-        ),
-      ])),
+      ),
     );
-    // )
   }
 }
