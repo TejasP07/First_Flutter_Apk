@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Addition ',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.black,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController num1controller = new TextEditingController();
   TextEditingController num2controller = new TextEditingController();
+  TextEditingController num3controller = new TextEditingController();
   String result = "0";
 
   @override
